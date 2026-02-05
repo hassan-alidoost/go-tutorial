@@ -12,6 +12,12 @@ type Product struct {
 	Price    float64
 }
 
+type Payload struct {
+	Name *string
+	Quantity *uint8
+	Price *float64
+}
+
 func main() {
 	inventory := make(map[int]Product)
 	product1 := Product{ID: 1, Name: "mobile", Quantity: 10, Price: 1000}
@@ -40,9 +46,46 @@ func main() {
 	// 	fmt.Println(error.Error())
 	// }
 	// fmt.Printf("Inventory: %v\n", inventory)
+    
+	name := "test"
+	qty := uint8(5)
+	payload := Payload{
+		Name: &name,
+		Quantity: &qty,
+	}
+
+	Update(inventory, product1, payload)
+	fmt.Printf("Inventory: %v", inventory)
+
 
 	total := CalculateTotalPrice(inventory)
 	fmt.Printf("Total price: %.2f", total)
+}
+
+func Update(inventory map[int]Product, product Product, payload  Payload) error {
+
+	var selectedProduct Product
+
+	if _, ok := inventory[int(product.ID)]; !ok {
+		return errors.New("Product not exists!")
+	}
+		
+	selectedProduct = inventory[int(product.ID)]
+
+	if payload.Name != nil && selectedProduct.Name != *payload.Name {
+		selectedProduct.Name = *payload.Name
+	}
+
+	if payload.Quantity != nil && selectedProduct.Quantity != *payload.Quantity {
+		selectedProduct.Quantity = *payload.Quantity
+	}
+
+	if payload.Price != nil && selectedProduct.Price != *payload.Price {
+		selectedProduct.Price = *payload.Price
+	}
+	inventory[int(product.ID)] = selectedProduct
+
+	return nil
 }
 
 
