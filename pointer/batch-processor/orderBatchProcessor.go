@@ -90,13 +90,13 @@ func processOrdersEfficiently(orders []Order) Statistics {
 		TotalRevenue: stats.TotalRevenue + remainOrderStats.TotalRevenue,
 		OrderCount:   stats.OrderCount + remainOrderStats.OrderCount,
 		MaxOrder:     math.Max(stats.MaxOrder, remainOrderStats.MaxOrder),
-		MinOrder:     math.Min(stats.MinOrder, remainOrderStats.MinOrder),
-		AverageOrder: (stats.AverageOrder + remainOrderStats.AverageOrder) / float64(2),
+		MinOrder:     math.Max(stats.MinOrder, remainOrderStats.MinOrder),
+		AverageOrder: (stats.TotalRevenue + remainOrderStats.TotalRevenue) / float64(stats.OrderCount + remainOrderStats.OrderCount),
 	}
 }
 
 func processOrdersNaive(orders []Order) Statistics {
-	var orderBuffer []Order
+	var orderBuffer []Order //orderBuffer := []Order{}
 	var stats Statistics
 	var remainOrderStats Statistics
 
@@ -117,8 +117,8 @@ func processOrdersNaive(orders []Order) Statistics {
 		TotalRevenue: stats.TotalRevenue + remainOrderStats.TotalRevenue,
 		OrderCount:   stats.OrderCount + remainOrderStats.OrderCount,
 		MaxOrder:     math.Max(stats.MaxOrder, remainOrderStats.MaxOrder),
-		MinOrder:     math.Min(stats.MinOrder, remainOrderStats.MinOrder),
-		AverageOrder: (stats.AverageOrder + remainOrderStats.AverageOrder) / float64(2),
+		MinOrder:     math.Max(stats.MinOrder, remainOrderStats.MinOrder),
+		AverageOrder: (stats.TotalRevenue + remainOrderStats.TotalRevenue) / float64(stats.OrderCount + remainOrderStats.OrderCount),
 	}
 }
 
@@ -126,8 +126,8 @@ func printMemStats(label string) {
 	var m runtime.MemStats
     runtime.ReadMemStats(&m)
     fmt.Printf("\n%s:\n", label)
-    fmt.Printf("  Alloc: %d MB\n", m.Alloc/1024/1024)
-    fmt.Printf("  TotalAlloc: %d MB\n", m.TotalAlloc/1024/1024)
+    fmt.Printf("  Alloc: %.2f MB\n", float64(m.Alloc)/1024/1024)
+    fmt.Printf("  TotalAlloc: %.2f MB\n", float64(m.TotalAlloc)/1024/1024)
     fmt.Printf("  Sys: %d MB\n", m.Sys/1024/1024)
     fmt.Printf("  NumGC: %d\n", m.NumGC)
 }
