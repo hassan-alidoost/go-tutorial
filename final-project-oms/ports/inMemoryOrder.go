@@ -1,8 +1,8 @@
 package ports
 
 import (
-	base "github.com/hassan-alidoost/go-tutorial/final-project-oms/core/domain/base"
-	domain "github.com/hassan-alidoost/go-tutorial/final-project-oms/core/domain/order"
+	base "github.com/hassan-alidoost/go-tutorial/final-project-oms/domain/base"
+	domain "github.com/hassan-alidoost/go-tutorial/final-project-oms/domain/order"
 )
 
 type OrderRepository interface {

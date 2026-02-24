@@ -3,8 +3,8 @@ package order
 import (
 	"errors"
 
-	domain "github.com/hassan-alidoost/go-tutorial/final-project-oms/core/domain"
-	base "github.com/hassan-alidoost/go-tutorial/final-project-oms/core/domain/base"
+	"github.com/hassan-alidoost/go-tutorial/final-project-oms/domain"
+	base "github.com/hassan-alidoost/go-tutorial/final-project-oms/domain/base"
 )
 
 type Item struct {

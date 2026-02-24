@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/hassan-alidoost/go-tutorial/final-project-oms/core/domain"
-	base "github.com/hassan-alidoost/go-tutorial/final-project-oms/core/domain/base"
-	"github.com/hassan-alidoost/go-tutorial/final-project-oms/core/domain/voucher"
+	"github.com/hassan-alidoost/go-tutorial/final-project-oms/domain"
+	base "github.com/hassan-alidoost/go-tutorial/final-project-oms/domain/base"
+	"github.com/hassan-alidoost/go-tutorial/final-project-oms/domain/voucher"
 )
 
 const maxOrderItem = 10

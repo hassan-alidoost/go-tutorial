@@ -3,7 +3,7 @@ package voucher
 import (
 	"errors"
 
-	base "github.com/hassan-alidoost/go-tutorial/final-project-oms/core/domain/base"
+	base "github.com/hassan-alidoost/go-tutorial/final-project-oms/domain/base"
 )
 
 type FixedAmountVoucher struct {

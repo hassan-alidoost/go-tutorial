@@ -1,6 +1,8 @@
 package domain
 
-import base "github.com/hassan-alidoost/go-tutorial/final-project-oms/core/domain/base"
+import (
+	base "github.com/hassan-alidoost/go-tutorial/final-project-oms/domain/base"
+)
 
 type Product struct {
 	ID    base.ID
