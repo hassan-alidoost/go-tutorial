@@ -1,10 +1,10 @@
 package domain
 
-type ProductID uint
-type Price uint
+import base "github.com/hassan-alidoost/go-tutorial/final-project-oms/core/domain/base"
 
 type Product struct {
-	ID    ProductID
+	ID    base.ID
 	Name  string
-	Price Price
+	Price base.Price
+	base.Timestamps
 }
