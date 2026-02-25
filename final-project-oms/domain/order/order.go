@@ -96,9 +96,7 @@ func (o *Order) TotalAmount() (base.Price, error) {
 func (o *Order) Pay() error {
 	defer func() { o.UpdatedAt = time.Now() }()
 
-	//todo-mock-pay
-
-	if err := o.TransitionTo(Cancelled); err != nil {
+	if err := o.TransitionTo(Paid); err != nil {
 		return err
 	}
 
